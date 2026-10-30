@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>拓圈AI · AI创业者人脉圈</title>
+<meta name="description" content="以全球鹰外贸AI获客体系V1.5为底座：线下沙龙、企业游学、老板资源库、年度会员与分销推广。九大SOP全链路 · B2B外贸与B2C跨境双赛道。">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{background:#e9ebef;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;color:#222}
+#app{max-width:430px;margin:0 auto;background:#f6f7f9;min-height:100vh;position:relative;padding-bottom:70px;box-shadow:0 0 24px rgba(0,0,0,.08)}
+.hd{background:#fff;padding:14px 16px 10px;display:flex;align-items:flex-start;gap:10px;position:sticky;top:0;z-index:20;border-bottom:1px solid #eee}
+.logo{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,#c9a86a,#a9823f);color:#fff;font-size:20px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none}
+.hd h1{font-size:17px}
+.hd p{font-size:11px;color:#999;margin-top:2px}
+.badge{margin-left:auto;background:#f3e9d2;color:#8a6d2f;font-size:11px;padding:4px 10px;border-radius:20px;flex:none}
+.sec{padding:12px 14px}
+.card{background:#fff;border-radius:14px;overflow:hidden;margin-bottom:12px;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.ev{display:flex;gap:10px;padding:10px;cursor:pointer}
+.evimg{width:104px;height:84px;border-radius:10px;flex:none;color:#fff;display:flex;align-items:flex-end;padding:6px;font-size:11px;font-weight:600;position:relative}
+.tag{position:absolute;top:6px;left:6px;background:rgba(0,0,0,.45);padding:2px 7px;border-radius:10px;font-size:10px}
+.ev h3{font-size:14px;line-height:1.35}
+.ev .meta{font-size:11px;color:#888;margin-top:5px;line-height:1.6}
+.price{color:#e4572e;font-weight:700;font-size:14px}
+.btn{background:#16347c;color:#fff;border:none;border-radius:20px;padding:7px 16px;font-size:13px;cursor:pointer}
+.btn.gold{background:linear-gradient(135deg,#c9a86a,#a9823f)}
+.btn.gray{background:#eee;color:#999}
+.btn.sm{padding:4px 12px;font-size:12px}
+.row{display:flex;align-items:center;gap:8px}
+.sp{flex:1}
+.nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;background:#fff;display:flex;border-top:1px solid #eee;z-index:30}
+.nav a{flex:1;text-align:center;padding:8px 0 10px;font-size:11px;color:#888;text-decoration:none;cursor:pointer}
+.nav a.on{color:#16347c;font-weight:700}
+.nav a i{display:block;font-style:normal;font-size:19px;line-height:1.2}
+.view{display:none}.view.on{display:block}
+.banner{border-radius:14px;padding:20px 16px;color:#fff;background:linear-gradient(120deg,#0e5c46,#12805f)}
+.banner h2{font-size:20px}.banner p{font-size:12px;opacity:.85;margin-top:4px}
+.blk{background:#fff;border-radius:14px;padding:14px;margin-bottom:12px}
+.blk h4{font-size:14px;margin-bottom:8px}
+.blk p,.blk li{font-size:13px;color:#555;line-height:1.7}
+.blk ul{padding-left:18px}
+.paybar{position:sticky;bottom:64px;background:#fff;border-top:1px solid #eee;padding:10px 14px;display:flex;align-items:center;gap:10px;z-index:15}
+input,textarea,select{width:100%;border:1px solid #ddd;border-radius:10px;padding:10px;font-size:14px;margin-bottom:10px;background:#fff}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;align-items:flex-end;justify-content:center;z-index:50}
+.modal.on{display:flex}
+.sheet{background:#fff;width:100%;max-width:430px;border-radius:18px 18px 0 0;padding:20px 16px 28px;max-height:86vh;overflow:auto}
+.sheet h3{font-size:16px;margin-bottom:12px}
+.kv{display:flex;justify-content:space-between;font-size:13px;padding:7px 0;border-bottom:1px dashed #eee;color:#555}
+.post{padding:12px;border-bottom:1px solid #f0f0f0}
+.post b{font-size:13px}.post p{font-size:13px;color:#444;line-height:1.6;margin-top:4px}
+.chip{display:inline-block;background:#eef2fb;color:#16347c;font-size:11px;border-radius:10px;padding:2px 8px;margin-right:6px}
+.boss{display:flex;gap:10px;padding:12px;border-bottom:1px solid #f0f0f0}
+.avatar{width:44px;height:44px;border-radius:50%;background:#16347c;color:#fff;display:flex;align-items:center;justify-content:center;font-size:17px;flex:none}
+.stat{display:flex;gap:10px}.stat div{flex:1;background:#fff;border-radius:12px;padding:12px;text-align:center}
+.stat b{display:block;font-size:18px;color:#16347c}.stat span{font-size:11px;color:#999}
+.menu a{display:flex;justify-content:space-between;background:#fff;padding:14px;border-bottom:1px solid #f2f2f2;font-size:14px;color:#333;text-decoration:none;cursor:pointer}
+.toast{position:fixed;top:40%;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.8);color:#fff;padding:10px 18px;border-radius:10px;font-size:13px;display:none;z-index:99}
+.note{font-size:11px;color:#aaa;line-height:1.6}
+.goldbar{background:linear-gradient(120deg,#2b2110,#57451c);color:#f3e2ae;border-radius:14px;padding:18px 16px;margin-bottom:12px}
+.goldbar h2{font-size:19px}.goldbar p{font-size:12px;opacity:.85;margin-top:5px;line-height:1.6}
+h2.pt{font-size:17px;padding:14px 14px 0}
+</style>
+</head>
+<body>
+<div id="app">
+<div class="hd"><div class="logo" id="logoTxt">拓</div><div><h1 id="hdTitle">沙龙活动</h1><p>全球鹰外贸AI获客体系 V1.5 · 打破AI信息差</p></div><span class="badge" id="userBadge">游客</span></div>
+
+<!-- 沙龙 -->
+<section class="view on" id="v-salon">
+<div class="sec"><div class="goldbar" style="background:linear-gradient(120deg,#101f3c,#16347c)"><h2>底座 · 全球鹰外贸AI获客体系 V1.5</h2><p>本圈所有沙龙、游学与会员服务，全部以全球鹰体系为底座：九大SOP全链路 · B2B外贸与B2C跨境双赛道 · 八大渠道 + AI GEO + ChatGPT Ads 流量矩阵 · 买手视角与AI智能接待两大增量层 · 12星座人格风控。</p><br><button class="btn gold" onclick="go('system')">查看体系全貌 ›</button></div><div class="row"><b style="font-size:14px">报名中</b><span class="chip" id="evCount"></span><span class="sp"></span><span class="note">线下沙龙 · 企业游学</span></div>
+<div style="height:10px"></div><div id="evList"></div></div>
+</section>
+
+<!-- 活动详情 -->
+<section class="view" id="v-detail"><div id="detailBox"></div></section>
+
+<!-- 会员 -->
+<section class="view" id="v-member">
+<div class="sec">
+<div class="goldbar"><h2>AI出海 · 年度老板会员</h2><p>为出海、AI创业、跨境老板打造的线下资源对接圈子。买的不是课程，是人脉、资源、曝光与行业信息。</p></div>
+<div class="blk"><h4>为什么加入</h4><ul><li>真实一手资源：探访实拍的老板资源，平台牵线引荐</li><li>高频线下场景：沙龙、游学、闭门茶话会全年不断</li><li>垂直精准圈子：只聚焦AI与出海方向的老板群体</li><li>一对一行业咨询：每月一次线下深度交流</li></ul></div>
+<div class="blk"><h4>全年权益</h4><ul><li>全年沙龙免费畅进</li><li>优质老板精准引荐</li><li>赠送1条个人业务曝光视频</li><li>每月1次线下一对一行业咨询（1小时）</li><li>会员专属闭门茶话交流会</li><li>标杆企业/工厂闭门游学参访</li></ul></div>
+<div class="blk"><h4>会员专属 · 体系落地支持（全球鹰 V1.5）</h4><ul><li>九大SOP全链路模板与表单优先同步（含最新增量层）</li><li>AI GEO获客与ChatGPT Ads付费意图投放层优先内测</li><li>买手视角选品与定价咨询：MSRP倒推FOB、三铁则过品</li><li>AI智能接待搭建指导：7×24值守、30秒接待、询盘统一收口</li><li>每月一次体系复盘：只迭代1–3个变量，数据说话</li></ul></div>
+<div class="blk"><h4>服务规则与常见问题</h4><p>会员有效期一整年，开通即生效，到期可续费；引荐只做牵线，不承诺成交结果；游学名额预约制、先约先得；开通后请添加主理人微信并填写会员信息登记表。7天内未使用任何权益可申请退款，已使用权益不支持退款。</p></div>
+<div class="card" style="padding:16px;text-align:center"><div class="note">主办方：深圳市拓圈科技有限公司 · 已办30+期线下沙龙</div>
+<div style="font-size:24px;font-weight:800;margin:10px 0">¥<span id="memberPrice">1980</span><span style="font-size:13px;color:#999"> / 年</span></div>
+<button class="btn gold" style="width:100%;padding:12px" onclick="buyMember()">立即开通年度会员</button>
+<div class="note" style="margin-top:8px">点击开通即表示已阅读并同意上方会员服务规则 · 支持微信扫码支付</div></div>
+</div></section>
+
+<!-- 圈子 -->
+<section class="view" id="v-circle">
+<h2 class="pt">老板圈子</h2><div class="sec">
+<div class="blk"><textarea id="postTxt" rows="3" placeholder="发布供需动态：你有什么资源 / 你需要什么对接…"></textarea>
+<div class="row"><select id="postKind" style="width:110px;margin:0"><option>供需</option><option>资源</option><option>求助</option></select><span class="sp"></span><button class="btn" onclick="addPost()">发布动态</button></div></div>
+<div class="card" id="postList"></div></div></section>
+
+<!-- 老板库 -->
+<section class="view" id="v-boss">
+<h2 class="pt">老板资源库</h2><div class="sec">
+<input id="bossQ" placeholder="搜索老板 / 行业 / 关键词…" oninput="renderBoss()">
+<div class="card" id="bossList"></div>
+<div class="note">管理员可在「我的 → 管理后台 → 老板名录管理」添加真实老板名片，添加后老板库即时可见；引荐由平台人工牵线。</div></div></section>
+
+<!-- 分销 -->
+<section class="view" id="v-dist">
+<h2 class="pt">分销中心</h2><div class="sec" id="distBox"></div></section>
+
+<!-- 我的 -->
+<section class="view" id="v-mine">
+<h2 class="pt">我的</h2><div class="sec">
+<div class="blk row"><div class="avatar" id="myAv">游</div><div><b id="myName">游客</b><div class="note" id="mySub">未登录 · 登录后可报名与开通会员</div></div><span class="sp"></span><button class="btn sm" id="loginBtn" onclick="openLogin()">登录</button></div>
+<div class="stat"><div><b id="stOrders">0</b><span>我的订单</span></div><div><b id="stTickets">0</b><span>报名凭证</span></div><div><b id="stComm">¥0</b><span>累计佣金</span></div></div>
+<div style="height:12px"></div>
+<div class="card menu">
+<a onclick="showTickets()">我的报名凭证 <span>›</span></a>
+<a onclick="showOrders()">我的支付记录 <span>›</span></a>
+<a onclick="go('dist')">分销中心 <span>›</span></a>
+<a onclick="go('member')">年度老板会员 <span>›</span></a>
+<a onclick="go('system')">全球鹰体系 V1.5 <span>›</span></a>
+<a onclick="showRefs()">我的引荐申请 <span>›</span></a>
+<a onclick="openAdmin()" id="adminEntry">管理后台 <span>›</span></a>
+</div>
+<div id="adminBox"></div>
+<div class="note" style="text-align:center;margin-top:14px">拓圈AI复刻版 · 微信扫码支付 · 数据保存在本机浏览器</div>
+</div></section>
+
+<!-- 体系 -->
+<section class="view" id="v-system">
+<h2 class="pt">全球鹰外贸AI获客体系 V1.5</h2><div class="sec">
+<div class="goldbar" style="background:linear-gradient(120deg,#101f3c,#16347c)"><h2>不是课程，是已跑通的获客操作系统</h2><p>27条产品线实跑验证：市场研判、国别蓝海评分、线索挖掘分层、八大渠道内容分发、询盘承接、报价履约、风险熔断、复盘沉淀，全链路标准化。</p></div>
+<div class="blk"><h4>九大 SOP 全链路</h4><ul><li>SOP01 买家挖掘：产业研判 + 国别蓝海评分，先选对市场</li><li>SOP02 Gmail触达培育：分层线索 + 个性化开发信</li><li>SOP03 社媒种草：八大渠道内容生产与分发</li><li>SOP04 官网AI接待：GEO结构化官网 + 三智能体访客入口</li><li>SOP05 询盘归集分流：全网询盘统一收口、每日分诊</li><li>SOP06 英文谈判：买家视角谈判体系</li><li>SOP07 WhatsApp履约：跟进、履约与客户成功</li><li>SOP08 单证量产：AI智能单证，标准化交付</li><li>SOP09 复盘迭代：数据复盘，每周只迭代1–3个变量</li></ul></div>
+<div class="blk"><h4>双赛道</h4><p><b>B2B外贸</b>：多人DMU决策、重资质重履约，走产业研判与分层获客。<br><b>B2C跨境</b>：情绪与趋势驱动，走选品打分、素材投放与测款复盘。</p></div>
+<div class="blk"><h4>三维流量矩阵</h4><ul><li>免费社媒种草：八大渠道全域分发</li><li>EDM精准触达：触发词管控 + 分层培育</li><li>AI精准投放：AI GEO让采购商问AI时先看到你 + ChatGPT Ads四类采购意图定向</li></ul></div>
+<div class="blk"><h4>两大增量层（2026-10并入）</h4><ul><li>买手视角：MSRP倒推FOB定价、三铁则选品、双版本报价、样品配零售方案资料包</li><li>AI智能接待：7×24值守、30秒内接待、全场景B2B答疑、意向识别与留资沉淀，未确认条款一律RFQ承接不编造</li></ul></div>
+<div class="blk"><h4>风控底座</h4><ul><li>12星座人格风控：星座为辅助标签，数据为终局决策</li><li>跨线去重拦截：同一买家不重复触达</li><li>风险熔断：合规、认证、商务条款未确认前不外发、不报价</li></ul></div>
+<div class="card" style="padding:16px;text-align:center"><p style="font-size:13px;color:#555">本圈沙龙、游学与会员服务均以本体系为底座与内容来源</p><br><button class="btn gold" style="width:100%;padding:12px" onclick="go('member')">加入年度会员 · 全年体系落地支持</button></div>
+</div></section>
+
+<nav class="nav" id="botNav">
+<a class="on" data-v="salon" onclick="go('salon')"><i>沙</i>沙龙</a>
+<a data-v="circle" onclick="go('circle')"><i>圈</i>圈子</a>
+<a data-v="boss" onclick="go('boss')"><i>库</i>老板库</a>
+<a data-v="dist" onclick="go('dist')"><i>推</i>分销</a>
+<a data-v="mine" onclick="go('mine')"><i>我</i>我的</a>
+</nav>
+</div>
+
+<!-- 登录 -->
+<div class="modal" id="m-login"><div class="sheet"><h3>登录 / 注册</h3>
+<input id="lgPhone" placeholder="手机号">
+<input id="lgPass" type="password" placeholder="密码（注册时设置）">
+<input id="lgRef" placeholder="邀请码（选填，如 TQ1002）">
+<button class="btn" style="width:100%;padding:12px" onclick="doLogin()">登录 / 注册</button>
+<div style="height:10px"></div>
+<button class="btn gold" style="width:100%;padding:12px" onclick="quickLogin('admin')">一键体验 · 管理员</button>
+<div style="height:8px"></div>
+<button class="btn" style="width:100%;padding:12px;background:#3c5aa6" onclick="quickLogin('member')">一键体验 · 示例会员</button>
+<p class="note" style="margin-top:10px">正式版将接入微信内自动登录；本公网演示版使用站内账号，数据仅保存在本机浏览器。</p>
+<button class="btn gray" style="width:100%" onclick="closeM('m-login')">取消</button></div></div>
+
+<!-- 支付 -->
+<div class="modal" id="m-pay"><div class="sheet"><h3>微信支付 · 商户收款码</h3><div id="payBox"></div><div class="row" style="margin:12px 0"><button class="btn sm" id="qrTab1" onclick="setQR(1)">商户收款码 · 斯密爱科技</button><button class="btn sm" id="qrTab2" style="background:#eee;color:#666" onclick="setQR(2)">Tim 经营码</button></div><img id="payQR" src="pay-merchant-s.png" alt="微信商户收款二维码" style="width:100%;max-width:290px;display:block;margin:0 auto;border-radius:12px;border:1px solid #eee">
+<button class="btn" style="width:100%;padding:12px;margin-top:12px" onclick="doPay()">我已完成支付 · 生成凭证</button>
+<button class="btn gray" style="width:100%;margin-top:8px" onclick="closeM('m-pay')">取消</button>
+<p class="note" style="margin-top:8px">扫码时请按上方金额付款，并在备注里写报名手机号。静态收款码无法自动核账：付款后点「我已完成支付」先生成凭证，商家在微信收款记录核对后确认报名。</p></div></div>
+
+<div class="toast" id="toast"></div>
+<script>
+var DEF={memberPrice:1980,commRate:20,events:[
+{id:1,t:"AI自动获客手机 · 企业游学",type:"游学",date:"10月30日 14:00-16:00",place:"深圳 · 宝安",price:100,left:3,full:0,c1:"#7a4a12",c2:"#b57e2e",desc:"【体系模块 SOP01 买家挖掘 + SOP02 触达培育 · 执行端】现场参观自动获客手机的实际部署，负责人讲解原理、适用行业与自动化获客案例，最后交流分享。",who:"做外贸、跨境、本地获客的老板；想用AI降获客成本的团队负责人"},
+{id:2,t:"AI跨境电商一人公司",type:"沙龙",date:"10月31日 19:00-21:00",place:"深圳 · 龙华",price:100,left:0,full:1,c1:"#16347c",c2:"#3c5aa6",desc:"【体系模块 B2C跨境赛道 · 一人公司版】一个人如何用全球鹰双赛道打法跑通选品、内容、客服与交付，分享一人公司的真实工作流与工具组合。",who:"跨境卖家、独立创业者、想轻资产起盘的老板"},
+{id:3,t:"AI外贸全链路自动化",type:"沙龙",date:"11月3日 14:00-16:00",place:"深圳 · 南山",price:100,left:12,full:0,c1:"#0e5c46",c2:"#12805f",desc:"【体系总览场 · 九大SOP全链路】从市场研判、国别蓝海评分、线索挖掘分层、开发信触达、询盘分诊到报价履约与复盘，全链路自动化拆解，含现场答疑。",who:"外贸公司老板、海外获客负责人、B2B团队"},
+{id:4,t:"AI漫剧出海自动化",type:"沙龙",date:"11月1日 14:00-16:00",place:"深圳 · 龙华",price:100,left:15,full:0,c1:"#5b2a86",c2:"#8e44ad",desc:"【体系模块 SOP03 社媒种草 · B2C内容赛道】AI漫剧从选题、生成、剪辑到海外平台分发的自动化流水线拆解，含变现路径与真实案例复盘。",who:"短剧与内容创业者、想做漫剧出海的团队与个人老板"},
+{id:5,t:"Muse AI获客和自动化",type:"沙龙",date:"11月5日 14:00-16:00",place:"深圳 · 福田",price:100,left:18,full:0,c1:"#0f4c5c",c2:"#2a9d8f",desc:"【体系模块 SOP04 官网AI接待 + SOP05 询盘归集分流】用 Muse 搭建获客与业务自动化工作流：线索处理、内容生产、客户跟进与日常办公自动化实操，对接体系的智能体调度中枢。",who:"想用AI提效获客的老板、运营负责人、外贸与销售团队"},
+{id:6,t:"Codex·AI获客和自动化",type:"沙龙",date:"11月7日 14:00-16:00",place:"深圳 · 南山",price:100,left:20,full:0,c1:"#22223b",c2:"#4a4e69",desc:"【体系自动化执行层 · SOP01/SOP08/SOP09】用 Codex 把获客流程写成可自动运行的系统：数据抓取、线索清洗、批量触达、单证量产与复盘报表自动化现场演示。",who:"有技术或产品团队的创业者、想把获客流程系统化的老板"}],
+posts:[{id:1,u:"陈总 · 跨境电商",k:"资源",txt:"手上有东南亚仓配资源，可对接需要海外仓的卖家，平台可帮我们约线下聊。",likes:6},
+{id:2,u:"林总 · AI工具",k:"供需",txt:"我们做AI客服系统，寻找有外贸客户资源的渠道伙伴合作分销。",likes:3}],
+bosses:[{id:1,n:"陈总",ind:"跨境电商",city:"深圳",intro:"年销过亿跨境卖家，主营东南亚市场，开放供应链与仓配合作。"},
+{id:2,n:"林总",ind:"AI软件",city:"广州",intro:"AI客服与获客工具创始人，服务300+外贸团队，寻渠道伙伴。"},
+{id:3,n:"王总",ind:"智能制造",city:"东莞",intro:"工厂主理人，做智能硬件OEM/ODM，可承接出海品牌代工。"}],
+users:[{phone:"13800000000",pass:"__DEMO_ADMIN_PASSWORD__",name:"管理员",role:"admin",code:"TQ1001",member:1},
+{phone:"13900000000",pass:"__DEMO_MEMBER_PASSWORD__",name:"示例会员",role:"member",code:"TQ1002",member:1}],
+orders:[],refs:[],withdrawals:[],commissions:[{to:"TQ1002",amt:60,from:"沙龙报名佣金",time:"示例"},{to:"TQ1002",amt:20,from:"会员开通佣金",time:"示例"}],
+clients:[{code:"TQ1002",n:"客户A · 已报名沙龙"},{code:"TQ1002",n:"客户B · 已开通会员"}]};
+var S;try{S=JSON.parse(localStorage.getItem("tq1"))||null}catch(e){S=null}
+if(!S||!S.events){S=JSON.parse(JSON.stringify(DEF));save()}
+else{var _chg=0;DEF.events.forEach(function(de){var ex=S.events.find(function(e){return e.t===de.t});if(!ex){S.events.push(JSON.parse(JSON.stringify(de)));_chg++}else{["type","date","place","price","desc","who","c1","c2"].forEach(function(k){if(ex[k]!==de[k]){ex[k]=de[k];_chg++}})}});if(_chg)save()}
+var cur=null,payItem=null;
+function save(){localStorage.setItem("tq1",JSON.stringify(S))}
+function $(i){return document.getElementById(i)}
+function toast(m){var t=$("toast");t.textContent=m;t.style.display="block";setTimeout(function(){t.style.display="none"},1800)}
+function esc(s){return String(s||"").replace(/</g,"&lt;")}
+function go(v){document.querySelectorAll(".view").forEach(function(x){x.classList.remove("on")});$("v-"+v).classList.add("on");document.querySelectorAll("#botNav a").forEach(function(a){a.classList.toggle("on",a.dataset.v===v)});var T={salon:"沙龙活动",circle:"老板圈子",boss:"老板资源库",dist:"分销中心",mine:"我的",member:"年度会员",detail:"活动详情",system:"全球鹰体系"};$("hdTitle").textContent=T[v]||"拓圈AI";window.scrollTo(0,0);if(v==="dist")renderDist();if(v==="mine")renderMine()}
+function renderEvents(){var h="";S.events.forEach(function(e){h+='<div class="card ev" onclick="openEv('+e.id+')"><div class="evimg" style="background:linear-gradient(135deg,'+e.c1+','+e.c2+')"><span class="tag">'+e.type+'</span>'+e.t.slice(0,6)+'</div><div class="sp"><h3>'+esc(e.t)+'</h3><div class="meta">'+e.date+'<br>'+e.place+(e.left>0&&e.left<=5?' · <span style="color:#e4572e">仅剩 '+e.left+' 人</span>':'')+'</div><div class="row"><span class="price">¥'+e.price+'</span><span class="sp"></span>'+(e.full?'<button class="btn gray sm">已满员</button>':'<button class="btn sm">报名</button>')+'</div></div></div>'});$("evList").innerHTML=h||'<div class="blk">暂无活动</div>';$("evCount").textContent=S.events.filter(function(e){return !e.full}).length+" 场报名中"}
+function openEv(id){var e=S.events.find(function(x){return x.id===id});if(!e)return;cur=e;var h='<div class="sec"><div class="banner"><h2>'+esc(e.t)+'</h2><p>'+e.date+' · '+e.place+'</p>'+(e.left>0&&e.left<=5?'<p style="color:#ffd9a8">名额紧张，报满即止</p>':'')+'</div><div style="height:12px"></div>'
++'<div class="blk"><h4>活动简介</h4><p>'+esc(e.desc)+'</p></div>'
++'<div class="blk"><h4>适合人群</h4><p>'+esc(e.who)+'</p></div>'
++'<div class="blk"><h4>活动流程</h4><ul><li>现场签到与参观</li><li>负责人讲解与案例分享</li><li>主题拆解与工具演示</li><li>自由交流与资源对接</li></ul></div>'
++'<div class="blk"><h4>报名须知</h4><ul><li>最终地点以活动群通知为准</li><li>请通过本页面报名，勿私下转账</li><li>报名后联系客服进活动群</li><li>一人一票，凭报名凭证入场</li></ul></div></div>'
++'<div class="paybar"><span class="price" style="font-size:19px">¥'+e.price+'</span><span class="note">门票</span><span class="sp"></span>'+(e.full?'<button class="btn gray">已满员</button>':'<button class="btn" style="padding:11px 26px" onclick="buyEvent()">立即报名</button>')+'</div>'
++'<div class="sec"><button class="btn gray" onclick="go(\'salon\')">‹ 查看更多沙龙</button></div>';$("detailBox").innerHTML=h;go("detail")}
+function needLogin(){if(!S.me){openLogin();toast("请先登录");return true}return false}
+function buyEvent(){if(needLogin())return;payItem={kind:"event",id:cur.id,title:cur.t,amt:cur.price};openPay()}
+function buyMember(){if(needLogin())return;payItem={kind:"member",title:"年度老板会员",amt:S.memberPrice};openPay()}
+function setQR(n){$("payQR").src=n===1?"pay-merchant-s.png":"pay-tim-s.png";$("qrTab1").style.cssText=n===1?"":"background:#eee;color:#666";$("qrTab2").style.cssText=n===2?"":"background:#eee;color:#666"}
+function openPay(){$("payBox").innerHTML='<div class="kv"><span>项目</span><b>'+esc(payItem.title)+'</b></div><div class="kv"><span>应付金额</span><b class="price">¥'+payItem.amt+'</b></div><div class="kv"><span>收款方</span><span>深圳市斯密爱科技有限公司</span></div>';setQR(1);$("m-pay").classList.add("on")}
+function doPay(){closeM("m-pay");var o={id:"TQ"+Date.now().toString(36).toUpperCase().slice(-6),user:S.me.name,phone:S.me.phone,kind:payItem.kind,title:payItem.title,amt:payItem.amt,time:new Date().toLocaleString(),status:"已支付(待核对)"};S.orders.push(o);
+if(payItem.kind==="event"){var e=S.events.find(function(x){return x.id===payItem.id});if(e&&e.left>0){e.left--;if(e.left===0)e.full=1}}
+if(payItem.kind==="member"){var u=S.users.find(function(x){return x.phone===S.me.phone});if(u)u.member=1;S.me.member=1}
+if(S.me.refBy&&S.me.refBy!==S.me.code){var c=Math.round(payItem.amt*(S.commRate||20)/100);S.commissions.push({to:S.me.refBy,amt:c,from:payItem.title+" 分销佣金",time:o.time})}
+save();renderEvents();renderMine();toast("已提交，凭证 "+o.id+"（待商家核对收款）");go("mine")}
+function openLogin(){$("m-login").classList.add("on")}
+function closeM(i){$(i).classList.remove("on")}
+function doLogin(){var p=$("lgPhone").value.trim(),pw=$("lgPass").value,rf=$("lgRef").value.trim().toUpperCase();if(!p||!pw){toast("请输入手机号和密码");return}
+var u=S.users.find(function(x){return x.phone===p});if(!u){u={phone:p,pass:pw,name:"用户"+p.slice(-4),role:"user",code:"TQ"+(1000+S.users.length+1),member:0,refBy:rf||""};S.users.push(u)}else if(u.pass!==pw){toast("密码不正确");return}
+if(rf&&!u.refBy)u.refBy=rf;S.me=u;save();closeM("m-login");renderMine();toast("欢迎，"+u.name)}
+function quickLogin(r){var u=S.users.find(function(x){return x.role===r});if(!u)return;S.me=u;save();closeM("m-login");renderMine();toast("已以"+u.name+"身份进入")}
+function logout(){S.me=null;save();renderMine();toast("已退出")}
+function renderMine(){var me=S.me;$("userBadge").textContent=me?(me.member?"年度会员":"已登录"):"游客";$("myName").textContent=me?me.name:"游客";$("myAv").textContent=me?me.name[0]:"游";$("mySub").textContent=me?(me.phone+" · 邀请码 "+me.code+(me.member?" · 年度会员":"")):"未登录 · 登录后可报名与开通会员";$("loginBtn").textContent=me?"退出":"登录";$("loginBtn").onclick=me?logout:openLogin;
+var my=S.orders.filter(function(o){return me&&o.phone===me.phone});$("stOrders").textContent=my.length;$("stTickets").textContent=my.filter(function(o){return o.kind==="event"}).length;
+var cm=S.commissions.filter(function(c){return me&&c.to===me.code}).reduce(function(a,c){return a+c.amt},0);$("stComm").textContent="¥"+cm}
+function showTickets(){if(needLogin())return;var my=S.orders.filter(function(o){return o.phone===S.me.phone&&o.kind==="event"});alert(my.length?my.map(function(o){return o.id+" · "+o.title+" · ¥"+o.amt}).join("\n"):"还没有报名凭证，去沙龙页报名吧")}
+function showOrders(){if(needLogin())return;var my=S.orders.filter(function(o){return o.phone===S.me.phone});alert(my.length?my.map(function(o){return o.time+" · "+o.title+" · ¥"+o.amt+" · "+o.status}).join("\n"):"暂无支付记录")}
+function showRefs(){if(needLogin())return;var my=S.refs.filter(function(r){return r.from===S.me.phone});alert(my.length?my.map(function(r){return "对 "+r.boss+" 的引荐 · "+r.status}).join("\n"):"暂无引荐申请，可在老板库发起")}
+function addPost(){if(needLogin())return;var t=$("postTxt").value.trim();if(!t){toast("先写点内容");return}S.posts.unshift({id:Date.now(),u:S.me.name,k:$("postKind").value,txt:t,likes:0});$("postTxt").value="";save();renderPosts();toast("已发布")}
+function renderPosts(){$("postList").innerHTML=S.posts.map(function(p){return '<div class="post"><b>'+esc(p.u)+'</b> <span class="chip">'+p.k+'</span><p>'+esc(p.txt)+'</p><div class="row"><span class="note">♥ '+p.likes+'</span><span class="sp"></span><button class="btn sm gray" style="background:#f2f2f2;color:#666" onclick="likePost('+p.id+')">点赞</button> <button class="btn sm" onclick="applyRef(\''+esc(p.u)+'\')">申请平台引荐</button></div></div>'}).join("")}
+function likePost(id){var p=S.posts.find(function(x){return x.id===id});if(p){p.likes++;save();renderPosts()}}
+function renderBoss(){var q=($("bossQ").value||"").trim();var list=S.bosses.filter(function(b){return !q||(b.n+b.ind+b.city+b.intro).indexOf(q)>=0});$("bossList").innerHTML=list.map(function(b){return '<div class="boss"><div class="avatar">'+b.n[0]+'</div><div class="sp"><b style="font-size:14px">'+esc(b.n)+'</b> <span class="chip">'+esc(b.ind)+'</span><span class="chip">'+esc(b.city)+'</span><p class="note" style="color:#666;font-size:12px;margin-top:4px">'+esc(b.intro)+'</p></div><button class="btn sm" onclick="applyRef(\''+esc(b.n)+'\')">引荐</button></div>'}).join("")||'<div class="post">没有匹配的老板名片</div>'}
+function applyRef(name){if(needLogin())return;S.refs.push({from:S.me.phone,boss:name,status:"待平台处理",time:new Date().toLocaleString()});save();toast("引荐申请已提交，平台将人工牵线")}
+function renderDist(){var box=$("distBox");if(!S.me){box.innerHTML='<div class="blk" style="text-align:center;padding:30px"><p>请先登录后查看分销中心</p><br><button class="btn" onclick="openLogin()">登录</button></div>';return}
+var me=S.me,myC=S.commissions.filter(function(c){return c.to===me.code}),tot=myC.reduce(function(a,c){return a+c.amt},0),myCl=S.clients.filter(function(c){return c.code===me.code});
+var share=location.href.split("#")[0]+" · 邀请码 "+me.code;
+box.innerHTML='<div class="blk"><h4>我的邀请码</h4><div class="row"><b style="font-size:22px;color:#16347c">'+me.code+'</b><span class="sp"></span><button class="btn sm" onclick="copyTxt(\''+me.code+'\')">复制邀请码</button></div><p class="note" style="margin-top:6px">好友注册时填你的邀请码并付费，你按 '+(S.commRate||20)+'% 获得佣金。</p></div>'
++'<div class="stat"><div><b>¥'+tot+'</b><span>累计佣金</span></div><div><b>'+myCl.length+'</b><span>我的客户</span></div><div><b>'+myC.length+'</b><span>佣金笔数</span></div></div><div style="height:12px"></div>'
++'<div class="blk"><h4>佣金明细</h4>'+(myC.length?myC.map(function(c){return '<div class="kv"><span>'+esc(c.from)+'</span><b style="color:#e4572e">+¥'+c.amt+'</b></div>'}).join(""):'<p>暂无佣金</p>')+'</div>'
++'<div class="blk"><h4>我的客户</h4>'+(myCl.length?myCl.map(function(c){return '<div class="kv"><span>'+esc(c.n)+'</span><span>已归因</span></div>'}).join(""):'<p>暂无客户</p>')+'</div>'
++'<div class="blk"><h4>提现</h4><p>可提现 ¥'+tot+'（演示口径，正式版接微信/银行卡打款）</p><br><button class="btn gold" onclick="applyWithdraw('+tot+')">申请提现</button></div>'}
+function copyTxt(t){if(navigator.clipboard)navigator.clipboard.writeText(t);toast("已复制 "+t)}
+function applyWithdraw(a){if(a<=0){toast("暂无可提现佣金");return}S.withdrawals.push({from:S.me.phone,amt:a,status:"待审核",time:new Date().toLocaleString()});save();toast("提现申请已提交，等待后台审核")}
+function openAdmin(){if(!S.me||S.me.role!=="admin"){toast("管理员身份才可进入后台（一键体验·管理员）");if(!S.me)openLogin();return}
+var box=$("adminBox");if(box.innerHTML){box.innerHTML="";return}
+var paid=S.orders.filter(function(o){return o.status.indexOf("已支付")===0}),rev=paid.reduce(function(a,o){return a+o.amt},0);
+var h='<div style="height:12px"></div><div class="blk"><h4>管理后台 · 概览</h4><div class="kv"><span>报名/订单总数</span><b>'+S.orders.length+'</b></div><div class="kv"><span>已支付订单</span><b>'+paid.length+'</b></div><div class="kv"><span>累计收入</span><b>¥'+rev+'</b></div><div class="kv"><span>注册用户</span><b>'+S.users.length+'</b></div><div class="kv"><span>待处理引荐</span><b>'+S.refs.filter(function(r){return r.status.indexOf("待")===0}).length+'</b></div><div class="kv"><span>待审核提现</span><b>'+S.withdrawals.filter(function(w){return w.status==="待审核"}).length+'</b></div></div>'
++'<div class="blk"><h4>发布新活动</h4><input id="adT" placeholder="活动标题"><input id="adD" placeholder="日期时间，如 11月8日 14:00-16:00"><input id="adP" placeholder="地点，如 深圳 · 福田"><input id="adPr" type="number" placeholder="价格，如 100"><button class="btn" style="width:100%" onclick="adminAddEv()">发布活动</button></div>'
++'<div class="blk"><h4>活动管理</h4>'+S.events.map(function(e){return '<div class="kv"><span>'+esc(e.t)+'</span><button class="btn sm gray" style="background:#f2f2f2;color:#666" onclick="adminDelEv('+e.id+')">'+(e.full?"恢复":"下架")+'</button></div>'}).join("")+'</div>'
++'<div class="blk"><h4>老板名录管理</h4><input id="abN" placeholder="老板称呼，如 张总"><input id="abInd" placeholder="行业，如 跨境电商"><input id="abCity" placeholder="城市，如 深圳"><input id="abIntro" placeholder="一句话简介：主营业务 / 可对接的资源或需求"><button class="btn" style="width:100%" onclick="adminAddBoss()">添加老板名片</button><div style="height:10px"></div>'+S.bosses.map(function(b){return '<div class="kv"><span>'+esc(b.n)+' · '+esc(b.ind)+' · '+esc(b.city)+'</span><button class="btn sm" style="background:#f2f2f2;color:#666" onclick="adminDelBoss('+b.id+')">删除</button></div>'}).join("")+'</div>'
++'<div class="blk"><h4>订单</h4>'+(S.orders.length?S.orders.slice().reverse().map(function(o){return '<div class="kv"><span>'+esc(o.user)+" · "+esc(o.title)+'</span><b>¥'+o.amt+'</b></div>'}).join(""):'<p>暂无订单</p>')+'</div>'
++'<div class="blk"><h4>引荐工单</h4>'+(S.refs.length?S.refs.map(function(r,i){return '<div class="kv"><span>'+esc(r.boss)+" · "+r.status+'</span><button class="btn sm" onclick="adminRef('+i+')">标记已牵线</button></div>'}).join(""):'<p>暂无引荐</p>')+'</div>'
++'<div class="blk"><h4>提现审核</h4>'+(S.withdrawals.length?S.withdrawals.map(function(w,i){return '<div class="kv"><span>'+w.phone+" · ¥"+w.amt+" · "+w.status+'</span>'+(w.status==="待审核"?'<button class="btn sm" onclick="adminWd('+i+')">通过</button>':"")+'</div>'}).join(""):'<p>暂无提现申请</p>')+'</div>'
++'<div class="blk"><h4>平台设置</h4><div class="kv"><span>会员年价（¥）</span><input id="setPrice" type="number" value="'+S.memberPrice+'" style="width:110px;margin:0"></div><div class="kv"><span>分销佣金比例（%）</span><input id="setRate" type="number" value="'+(S.commRate||20)+'" style="width:110px;margin:0"></div><br><button class="btn" style="width:100%" onclick="adminSettings()">保存设置</button></div>';
+box.innerHTML=h;box.scrollIntoView()}
+function adminAddBoss(){var n=$("abN").value.trim();if(!n){toast("填写老板称呼");return}S.bosses.unshift({id:Date.now(),n:n,ind:$("abInd").value.trim()||"其他",city:$("abCity").value.trim()||"深圳",intro:$("abIntro").value.trim()||"老板资源，平台可引荐对接。"});save();renderBoss();$("adminBox").innerHTML="";openAdmin();toast("老板名片已添加，老板库即时可见")}
+function adminDelBoss(id){S.bosses=S.bosses.filter(function(b){return b.id!==id});save();renderBoss();$("adminBox").innerHTML="";openAdmin();toast("已删除该名片")}
+function adminAddEv(){var t=$("adT").value.trim();if(!t){toast("填写活动标题");return}S.events.unshift({id:Date.now(),t:t,type:"沙龙",date:$("adD").value||"待定",place:$("adP").value||"深圳",price:+$("adPr").value||100,left:20,full:0,c1:"#16347c",c2:"#3c5aa6",desc:"活动详情待完善。",who:"创业者与老板"});save();renderEvents();$("adminBox").innerHTML="";openAdmin();toast("活动已发布")}
+function adminDelEv(id){var e=S.events.find(function(x){return x.id===id});if(e){e.full=e.full?0:1;save();renderEvents();$("adminBox").innerHTML="";openAdmin()}}
+function adminRef(i){S.refs[i].status="已牵线";save();$("adminBox").innerHTML="";openAdmin();toast("已标记")}
+function adminWd(i){S.withdrawals[i].status="已通过";save();$("adminBox").innerHTML="";openAdmin();toast("提现已通过")}
+function adminSettings(){S.memberPrice=+$("setPrice").value||1980;S.commRate=+$("setRate").value||20;$("memberPrice").textContent=S.memberPrice;save();toast("设置已保存")}
+$("memberPrice").textContent=S.memberPrice||1980;
+renderEvents();renderPosts();renderBoss();renderMine();
+</script>
+</body>
+</html>
